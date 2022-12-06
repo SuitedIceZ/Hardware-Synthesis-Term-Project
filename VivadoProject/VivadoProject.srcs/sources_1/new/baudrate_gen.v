@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 12/06/2022 01:11:02 PM
+// Create Date: 12/06/2022 02:21:36 PM
 // Design Name: 
-// Module Name: mainSystem
+// Module Name: baudrate_gen
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,13 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mainSystem(
+module baudrate_gen(
     input clk,
-    input sw,
-    input RsRx,
-    output RsTx
+    output reg baud
     );
-    uartSystem(clk,RsRx,RsTx);
     
+    integer counter;
+    always @(posedge clk) begin
+        counter = counter + 1;
+        if (counter == 27) begin counter = 0; baud = ~baud; end 
+        // Clock = 10ns
+        // ClockFreq = 1/10ns = 100 MHz
+        // Baudrate = 115200
+        // counter = ClockFreq/Baudrate/32 325 as 9600 , 27 as 115200
+    end
     
 endmodule
