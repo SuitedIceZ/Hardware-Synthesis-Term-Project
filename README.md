@@ -1,1 +1,26 @@
 # Hardware-Synthesis-Term-Project
+
+
+
+# TODO list 
+inorder maybe?
+## input module?
+- UART module by Serial interface (4 digits of decimal operation)
+- Reset switch (ทำหลังสุดมั้ง)
+
+## utils module?
+- debouncer
+- single pulser
+- D-flipflop
+
+## calculate module?
+- Memory System (4 digits of decimal operation)
+- ALU (plus, minus, multiplication, division)
+
+## output module?
+- VGA display
+(640*480?, Display 4 digits, show "NaN" for over and under flow)
+
+## controller module?
+- Assembly code to control all the system 
+- Top-most module?
