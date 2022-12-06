@@ -23,13 +23,15 @@
 module uartSystem(
     input clk,
     input RsRx,
-    output RsTx
+    output RsTx,
+    output wire [7:0] data_out,
+    output wire received
     );
     
     reg ena, last_rec;
     reg [7:0] data_in;
-    wire [7:0] data_out;
-    wire sent, received, baud;
+//    wire [7:0] data_out;
+    wire sent, baud;//,received;
     
     baudrate_gen baudrate_gen(clk, baud);
     uart_rx receiver(baud, RsRx, received, data_out);
@@ -38,8 +40,13 @@ module uartSystem(
     always @(posedge baud) begin
         if (ena) ena = 0;
         if (~last_rec & received) begin
-            data_in = data_out + 8'h01;
-            if (data_in <= 8'h7A && data_in >= 8'h41) ena = 1;
+            data_in = data_out;
+            
+            if ( 8'h30 <= data_in && data_in <= 8'h39 ) ena = 1; //number
+            if (data_in == 8'h0A) ena = 1; //Enter (Line feed)
+            if (data_in == 8'h2B || data_in == 8'h2D || data_in == 8'h2A || data_in == 8'h2F)ena = 1; // +,-,*,/
+//            if (data_in <= 8'h7A && data_in >= 8'h41) ena = 1; //Alphabet
+            
         end
         last_rec = received;
     end

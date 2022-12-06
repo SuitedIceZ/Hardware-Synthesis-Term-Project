@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 12/06/2022 01:11:02 PM
+// Create Date: 12/06/2022 09:36:56 PM
 // Design Name: 
-// Module Name: mainSystem
+// Module Name: inputController
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,23 +20,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mainSystem(
+module inputController(
     input clk,
-    input sw,
-    input RsRx,
-    output RsTx
+    input input_byte,
+    input received,
+    output A_num,
+    output B_num
     );
+    reg [1:0] state; // 0 receiving A , 1 receiving Sign , 2  receiving B , 3 show answer
+    reg [7:0] buffer_byte;
     
-    //input from uart (by keyboard in serial terminal)
-    wire [7:0] input_byte; 
+    initial
+    begin
+        buffer_byte = 8'h00;
+        state = 0;
+    end
     
-    //uart input
-    uartSystem(clk,RsRx,RsTx,input_byte,received);
-    
-    //input memory controller
-    wire [31:0] A_num;
-    wire [31:0] B_num;
-    inputController(clk,input_byte,received,A_num,B_num);
-
-    
+    always @(posedge received)
+    begin
+        
+    end
 endmodule

@@ -5,7 +5,9 @@
 # TODO list 
 inorder maybe?
 ## input module?
-- UART module by Serial interface (4 digits of decimal operation)
+- UART module by Serial interface 
+    - (4 digits of decimal operation) 
+    - [CHECK] ได้ข้อมูล byte แล้ว
 - Reset switch (ทำหลังสุดมั้ง)
 
 ## utils module?
@@ -22,5 +24,5 @@ inorder maybe?
 (640*480?, Display 4 digits, show "NaN" for over and under flow)
 
 ## controller module?
-- Assembly code to control all the system 
+- Assembly code to control all the system (คิดว่าไม่จำเป็น)
 - Top-most module?
