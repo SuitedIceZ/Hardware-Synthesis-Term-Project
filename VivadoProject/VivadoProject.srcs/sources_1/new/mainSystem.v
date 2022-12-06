@@ -36,7 +36,7 @@ module mainSystem(
     //input memory controller
     wire [31:0] A_num;
     wire [31:0] B_num;
-    inputController(clk,input_byte,received,A_num,B_num);
+    inputController(clk,input_byte,received,reset,A_num,B_num);
 
     
 endmodule

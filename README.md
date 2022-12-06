@@ -17,11 +17,16 @@ inorder maybe?
 
 ## calculate module?
 - Memory System (4 digits of decimal operation)
+- inputController
+    - done without tested
+
 - ALU (plus, minus, multiplication, division)
 
 ## output module?
 - VGA display
 (640*480?, Display 4 digits, show "NaN" for over and under flow)
+- numConverter
+    - convert two complement number to display
 
 ## controller module?
 - Assembly code to control all the system (คิดว่าไม่จำเป็น)
