@@ -2,7 +2,7 @@
 
 ## char
 encoded = template
-- CE = Empty
+
 - C0 = 0
 - C1 = 1
 - C2 = 2
@@ -13,14 +13,15 @@ encoded = template
 - C7 = 7
 - C8 = 8
 - C9 = 9
-- Ca = a
-- CM = minus
-- CN = N
+- C10 = a
+- C11 = minus
+- C12 = N
+- C13 = Empty
 
 ## notation
 encoded = template
-- SE = empty
-- S0 = plus
-- S1 = minus
-- S2 = multi
-- S3 = divide
+- C14 = empty
+- C15 = plus
+- C16 = minus
+- C17 = multi
+- C18 = divide

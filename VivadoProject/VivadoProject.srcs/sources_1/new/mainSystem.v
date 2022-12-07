@@ -45,5 +45,5 @@ module mainSystem(
     inputController(clk,input_byte,received,reset,A_num,B_num);
 
     //VGA system
-    VGA_system(clk,reset,A_num,B_num,hsync,vsync,{vgaRed, vgaGreen, vgaBlue});
+    VGA_system(clk,reset,A_num,B_num,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});
 endmodule
