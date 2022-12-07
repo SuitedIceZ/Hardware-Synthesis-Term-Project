@@ -45,7 +45,18 @@ module inputController(
         internal_reset = 0;
     end
     
-    always @(posedge reset or posedge internal_reset)
+    always @(posedge reset  )
+    begin
+        state = 0;
+        order_state = 0;
+        sign_state = 0;
+        A_num = 0;
+        B_num = 0;
+        ALU_sign = 0;
+        internal_reset = 0;
+    end
+    
+    always @(posedge internal_reset)
     begin
         state = 0;
         order_state = 0;
