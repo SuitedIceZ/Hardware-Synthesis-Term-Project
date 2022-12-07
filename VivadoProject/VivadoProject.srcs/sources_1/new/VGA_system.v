@@ -69,7 +69,7 @@ module VGA_system(
     
     reg [6:0] size_x [15:0];
     reg [6:0] size_y [15:0];
-    
+    // load size and position into mem from txt file
     initial
     begin
         $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_position/pos_x.txt",pos_x,0,15);
@@ -78,9 +78,31 @@ module VGA_system(
         $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_size/size_x.txt",size_x,0,15);
         $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_size/size_y.txt",size_y,0,15);
     end
+    
+    reg [59:0] pixel_mem_array [0:15][95:0];
+    // initialize every pixel_mem_array to 0
+    initial
+        for(i = 0 ; i < 16 ; i = i + 1)begin
+            for(j = 0 ; j < 96 ; j = j + 1)begin
+                pixel_mem_array[i][j] = {60{1'b0}};
+            end
+        end
+    begin
+        
+    end
     // TODO : assign each rgb_reg to input_mem[y][x] screen
     // rgb buffer
+    integer Si;
     always @(posedge p_tick) begin
+        //update screen_mem
+        for(Si = 0 ; Si < 16 ; Si = Si + 1)begin
+            for(i = pos_y[Si] ; i <= pos_y[Si] + size_y [Si] ; i = i + 1)begin
+                for(j = pos_x[Si] ; j <= pos_x[Si] + size_x [Si] ; j = j + 1)begin
+                    screen_mem[i][j] = pixel_mem_array[Si][i][j];
+                end
+            end
+        end
+        //check screen_mem boolean status
         rgb_reg = (screen_mem[y][x]) ? {4'hF,4'hF,4'hF} : {4'h0,4'h0,4'h0};
     end
     // output
