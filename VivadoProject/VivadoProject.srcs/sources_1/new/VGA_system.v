@@ -65,22 +65,43 @@ module VGA_system(
     
     
     integer i,j;
-    //reg [59:0] pixel_mem_array [0:15][95:0];
-    //reg [5760:0] pixel_mem_vector [0:15];
-    //reg pixel_mem_array [0:15][95:0][59:0];
-    reg [59:0] pixel_mem_array_1 [95:0];
+    
+    reg [0:59] pixel_mem_array_0 [95:0];
+    reg [0:59] pixel_mem_array_1 [95:0];
+    reg [0:59] pixel_mem_array_2 [95:0];
+    reg [0:59] pixel_mem_array_3 [95:0];
+    reg [0:59] pixel_mem_array_4 [95:0];
+    reg [0:59] pixel_mem_array_5 [95:0];
+    reg [0:59] pixel_mem_array_6 [95:0];
+    reg [0:59] pixel_mem_array_7 [95:0];
+    reg [0:59] pixel_mem_array_8 [95:0];
+    reg [0:59] pixel_mem_array_9 [95:0];
+    reg [0:59] pixel_mem_array_10 [95:0];
+    reg [0:59] pixel_mem_array_11 [95:0];
+    reg [0:59] pixel_mem_array_12 [95:0];
+    reg [0:59] pixel_mem_array_13 [95:0];
+    reg [0:59] pixel_mem_array_14 [95:0];
+    reg [0:59] pixel_mem_array_15 [59:0];
     // initialize every pixel_mem_array to 0
-    /*
     initial
     begin
-        for(i = 0 ; i < 16 ; i = i + 1)begin
-            for(j = 0 ; j < 96 ; j = j + 1)begin
-                //$readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_position/pos_x.txt",pixel_mem_array[i],0,95);
-                //pixel_mem_array[i][j] = {60{1'b0}};
-            end
-        end
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C11.txt",pixel_mem_array_0,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C1.txt",pixel_mem_array_1,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C2.txt",pixel_mem_array_2,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C3.txt",pixel_mem_array_3,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C4.txt",pixel_mem_array_4,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C13.txt",pixel_mem_array_5,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C5.txt",pixel_mem_array_6,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C6.txt",pixel_mem_array_7,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C7.txt",pixel_mem_array_8,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C9.txt",pixel_mem_array_9,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C13.txt",pixel_mem_array_10,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C13.txt",pixel_mem_array_11,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C12.txt",pixel_mem_array_12,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C10.txt",pixel_mem_array_13,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C12.txt",pixel_mem_array_14,0,95);
+        $readmemb("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_encoded/C17.txt",pixel_mem_array_15,0,59);
     end
-    */
     
     reg [4:0] input_encoded [15:0];
     // TODO : load pixel_mem_array every load_ena
@@ -100,6 +121,7 @@ module VGA_system(
         
         current_state = 0;
         //Check each number and sign boundary
+        /*
         for(Si = 0 ; Si < 16 ; Si = Si + 1)begin
             if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
                 if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
@@ -107,6 +129,103 @@ module VGA_system(
                       current_state = 1;
                 end
             end
+        end
+        */
+        Si = 0;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_0[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 1;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_1[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 2;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_2[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 3;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_3[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 4;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_4[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 5;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_5[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 6;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_6[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 7;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_7[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 8;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_8[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 9;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_9[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 10;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_10[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 11;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_11[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 12;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_12[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 13;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_13[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 14;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_14[y-pos_y[Si]][x-pos_x[Si]];
+                end
+        end
+        Si = 15;
+        if(pos_y[Si] <= y && y <=  pos_y[Si] + size_y[Si])begin
+                if(pos_x[Si] <= x && x <= pos_x[Si] + size_x[Si])begin
+                    current_state = pixel_mem_array_15[y-pos_y[Si]][x-pos_x[Si]];
+                end
         end
         
         //Write bar
