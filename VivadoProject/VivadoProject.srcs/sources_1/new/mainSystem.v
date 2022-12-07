@@ -22,7 +22,7 @@
 
 module mainSystem(
     input clk,
-    input sw,
+    input [3:0] sw,
     input RsRx,
     output wire [3:0] vgaRed, 
     output wire [3:0] vgaGreen, 
@@ -31,7 +31,7 @@ module mainSystem(
     output RsTx
     );
     wire reset;
-    assign reset = sw;
+    assign reset = sw[0];
     
     //input from uart (by keyboard in serial terminal)
     wire [7:0] input_byte; 
