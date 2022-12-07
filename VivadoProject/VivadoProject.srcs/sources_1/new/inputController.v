@@ -27,7 +27,7 @@ module inputController(
     input reset,
     output reg [31:0] A_num, // two complement number
     output reg [31:0] B_num, // two complement number
-    output reg [1:0] ALU_sign // 0,1,2,3 for +,-,*,/ inorder
+    output reg [2:0] ALU_sign // 0,1,2,3,4 for empty,+,-,*,/ in order
     );
     reg [1:0] state; // 0 receiving A , 1 receiving Sign , 2  receiving B , 3 show answer
     reg [2:0] order_state; // 0,1,2,3,4 inorder
@@ -116,13 +116,13 @@ module inputController(
         end
         else if(state == 1)begin //Input ALU_sign
             if(input_byte == 8'h2B) // +
-                ALU_sign = 0;
-            else if(input_byte == 8'h2D) // -
                 ALU_sign = 1;
-            else if(input_byte == 8'h2A) // *
+            else if(input_byte == 8'h2D) // -
                 ALU_sign = 2;
-            else if(input_byte == 8'h2F) // /
+            else if(input_byte == 8'h2A) // *
                 ALU_sign = 3;
+            else if(input_byte == 8'h2F) // /
+                ALU_sign = 4;
         end
     end
 endmodule
