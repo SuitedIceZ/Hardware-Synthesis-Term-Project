@@ -61,6 +61,23 @@ module VGA_system(
         
     end
     
+    //Update screen mem to sub-memory mapped
+    
+    // [4:0] {4,3,2,1,0} = row1 , [9:5] {9,8,7,6,5} = row2 , [14:10] {14,13,12,11,10} = row3 , [15] = sign
+    reg [9:0] pos_x [15:0];
+    reg [9:0] pos_y [15:0];
+    
+    reg [6:0] size_x [15:0];
+    reg [6:0] size_y [15:0];
+    
+    initial
+    begin
+        $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_position/pos_x.txt",pos_x,0,15);
+        $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_position/pos_y.txt",pos_y,0,15);
+        
+        $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_size/size_x.txt",size_x,0,15);
+        $readmemd("D:/Education/year3/term1/HW_SYS_LAB/TermProject/resource/display_size/size_y.txt",size_y,0,15);
+    end
     // TODO : assign each rgb_reg to input_mem[y][x] screen
     // rgb buffer
     always @(posedge p_tick) begin

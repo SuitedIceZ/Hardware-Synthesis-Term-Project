@@ -29,7 +29,8 @@ inorder maybe?
     - VGA system module
         - [CHECK] ได้ reg mem internal ขนาด 640*480 แล้ว
         - [CHECK] initial bar แล้ว (done without tested)
-        - assign แต่ละตำแหน่งไปยัง dynamic mem ที่เปลี่ยนไปตามแต่ละตัวที่โหลดมาได้
+        - [CHECK] เพิ่ม mem เก็บ position และ size แล้ว (done without tested)
+        - assign แต่ละตำแหน่งไปยัง dynamic mem  ที่เปลี่ยนไปตามแต่ละตัวที่โหลดมาได้
 - numConverter
     - convert two complement number to display
 
@@ -39,6 +40,8 @@ inorder maybe?
 
 # Note
 
+
+
 ## ตำแหน่ง display
 
 ตำแหน่ง (ซ้ายบน) 
@@ -46,7 +49,7 @@ inorder maybe?
 แถวสอง: y= 183 | x เหมือนเดิม 
 เครื่องหมาย: y= 183 | x= 500
 เส้นคั่นระหว่าง input & output: y= 291 | x= 80 
-แถวสอง: y= 311 | x เหมือนเดิม 
+แถวสาม: y= 311 | x เหมือนเดิม 
 
 ## ขนาด display
 
@@ -56,4 +59,14 @@ inorder maybe?
 เส้นคั่นระหว่าง input & output: y= 8 | x= 396
 
 ## คำสั่งอ่าน mem
-    $readmemb(FILE_PATH, mem, [left ,right]);
+    $readmemb(FILE_PATH, mem, right ,left); //b,d,h
+    // use full file path and "/" instead of "\"
+    // work on : [word_size-1:0] mem [left:right]
+    // Each row of FILE_PATH = size of mem word
+    // FILE_PATH have {left}+1 row
+
+## overall design
+https://www.figma.com/file/ttdMgiPqOm3iubzaCuELEg/Untitled?node-id=0%3A1&t=1q9XEZVmiG1E8r37-1
+
+## memory generator
+https://colab.research.google.com/drive/1w_Xdy1zjZwN9j4Df6NwWMuRBn8sb7eZn?usp=sharing

@@ -2,6 +2,7 @@
 
 ## char
 encoded = template
+- CE = Empty
 - C0 = 0
 - C1 = 1
 - C2 = 2
@@ -18,6 +19,7 @@ encoded = template
 
 ## notation
 encoded = template
+- SE = empty
 - S0 = plus
 - S1 = minus
 - S2 = multi
