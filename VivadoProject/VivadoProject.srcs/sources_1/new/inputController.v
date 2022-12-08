@@ -28,11 +28,13 @@ module inputController(
     output reg [31:0] A_num, // two complement number
     output reg [31:0] B_num, // two complement number
     output reg [2:0] ALU_sign // 0,1,2,3,4 for empty,+,-,*,/ in order
+    //Debugger
+    ,output reg sign_state
     );
     reg [1:0] state; // 0 receiving A , 1 receiving Sign , 2  receiving B , 3 show answer
     reg [2:0] order_state; // 0,1,2,3,4 inorder
     
-    reg sign_state;
+//    reg sign_state;
     reg internal_reset;
     
     initial
@@ -78,7 +80,7 @@ module inputController(
                     if(sign_state)
                         A_num = -1*A_num;
                 end
-                else if(state == 2 && sign_state == 1)begin
+                else if(state == 2 && sign_state == 1)begin //convert to negative
                     if(sign_state)
                         B_num = -1*B_num;
                 end
@@ -86,8 +88,10 @@ module inputController(
                 
                 if(state == 3) //reset
                     internal_reset = 1;
-                else
+                else begin
                     state = state + 1;
+                    order_state = 0;
+                end
             end
             else if(state == 0 || state == 2)begin //Input number
                 if(order_state == 0)begin
@@ -98,9 +102,9 @@ module inputController(
                     else if ( 8'h30 <= input_byte && input_byte <= 8'h39 )begin //number
                         order_state = 1;
                         if(state == 0)
-                            A_num[7:0] = input_byte;
+                            A_num[7:0] = input_byte - 8'h30;
                         else
-                            B_num[7:0] = input_byte;
+                            B_num[7:0] = input_byte - 8'h30;
                     end
                 end
                 else if(order_state <= 4)begin
@@ -108,11 +112,11 @@ module inputController(
                         order_state = order_state + 1;
                         if(state == 0)begin
                             A_num = A_num * 10;
-                            A_num = A_num + input_byte;
+                            A_num = A_num + (input_byte - 8'h30);
                         end
                         else begin
                             B_num = B_num * 10;
-                            B_num = B_num + input_byte;
+                            B_num = B_num + (input_byte - 8'h30);
                         end
                     end
                 end

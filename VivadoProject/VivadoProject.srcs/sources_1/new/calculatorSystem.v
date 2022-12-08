@@ -28,11 +28,16 @@ module calculatorSystem(
     output reg[31:0] C_num,
     output reg C_valid
     );
+    
+    reg divide_sign_buffer;
+    
     initial
     begin
         C_num = 0;
         C_valid = 0;
+        divide_sign_buffer = 0;
     end
+    
     
     always @(posedge clk)begin
         C_valid = 1;
@@ -43,14 +48,43 @@ module calculatorSystem(
         end else if(operand_code == 3)begin //multi
             C_num = A_num * B_num;
         end else if(operand_code == 4)begin //divide
-            if(B_num == 0)
+            if(B_num == 0) //cant divide by zero
                 C_valid = 0;
-            else
-                C_num = A_num / B_num;
+            else begin //manual config for auto synthesis divider module
+            
+                divide_sign_buffer = A_num[31] ^ B_num[31]; //sign buffer
+                
+                if(A_num[31] == 1 && B_num[31] == 1)begin //both neg
+                    C_num = (-1*A_num) / (-1*B_num);
+                end else if(A_num[31] == 1)begin //A neg
+                    C_num = (-1*A_num) / B_num;
+                end else if(B_num[31] == 1)begin //B neg
+                    C_num = A_num / (-1*B_num);
+                end else begin
+                    C_num = A_num / B_num;
+                end
+                
+                if(divide_sign_buffer)
+                    C_num = -1*C_num;
+                
+            end
         end
-        if(C_num < -9999 || C_num > 9999)begin //out of bound
+        
+        if((C_num[31] == 0) && (C_num > 9999))begin //out of bound
             C_valid = 0;
         end
-            
+        if( (C_num[31] == 1) && ( (-1*C_num) > 9999) )begin //out of bound
+            C_valid = 0;
+        end
+        /*
+        if((C_num < -9999) || (C_num > 9999))begin //out of bound
+            C_valid = 0;
+        end
+        */  
+        /* 
+        if((C_num < 32'hD8F1))begin //out of bound
+            C_valid = 0;
+        end
+        */
     end
 endmodule
