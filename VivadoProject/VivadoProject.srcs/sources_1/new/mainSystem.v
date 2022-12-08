@@ -48,8 +48,9 @@ module mainSystem(
 
     //ALU and calculate system
     wire C_valid;
-    assign C_valid = 1; //hardcode always valid
-    //TODO : calculator module
+    wire [31:0] C_num;
+    //assign C_valid = 1; //hardcode always valid
+    calculatorSystem(clk,A_num,B_num,operand_code,C_num,C_valid);
     
     //VGA system
     VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});

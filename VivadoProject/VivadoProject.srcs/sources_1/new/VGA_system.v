@@ -124,9 +124,14 @@ module VGA_system(
     //    wire [4:0] number_encoded_all = {AS,A0,A1,A2,A3,BS,B0,B1,B2,B3,CS,C0,C1,C2,C3};
     
     wire [4:0] number_encoded_all [15:0];
-    twoComConverter A_num_converter(-7021,1,number_encoded_all[0],number_encoded_all[1],number_encoded_all[2],number_encoded_all[3],number_encoded_all[4]);
+    /*twoComConverter A_num_converter(-7021,1,number_encoded_all[0],number_encoded_all[1],number_encoded_all[2],number_encoded_all[3],number_encoded_all[4]);
     twoComConverter B_num_converter(-8941,1,number_encoded_all[5],number_encoded_all[6],number_encoded_all[7],number_encoded_all[8],number_encoded_all[9]);
     twoComConverter C_num_converter(-10000,0,number_encoded_all[10],number_encoded_all[11],number_encoded_all[12],number_encoded_all[13],number_encoded_all[14]);
+    */
+    twoComConverter A_num_converter(A_num,1,number_encoded_all[0],number_encoded_all[1],number_encoded_all[2],number_encoded_all[3],number_encoded_all[4]);
+    twoComConverter B_num_converter(B_num,1,number_encoded_all[5],number_encoded_all[6],number_encoded_all[7],number_encoded_all[8],number_encoded_all[9]);
+    twoComConverter C_num_converter(C_num,C_valid,number_encoded_all[10],number_encoded_all[11],number_encoded_all[12],number_encoded_all[13],number_encoded_all[14]);
+    
     assign number_encoded_all[15] = operand_code + 14;
 
 
