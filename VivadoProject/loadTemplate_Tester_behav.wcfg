@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="loadTemplate_Tester_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="loadTemplate_Tester" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2,599,926 ps"></ZoomStartTime>
+      <ZoomEndTime time="2,600,048 ps"></ZoomEndTime>
+      <Cursor1Time time="2,179,404 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/loadTemplate_Tester/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/rLine" type="array">
+      <obj_property name="ElementShortName">rLine[10:0]</obj_property>
+      <obj_property name="ObjectShortName">rLine[10:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/rLocation" type="logic">
+      <obj_property name="ElementShortName">rLocation</obj_property>
+      <obj_property name="ObjectShortName">rLocation</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/rWordTest" type="array">
+      <obj_property name="ElementShortName">rWordTest[0:59]</obj_property>
+      <obj_property name="ObjectShortName">rWordTest[0:59]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/rWord" type="array">
+      <obj_property name="ElementShortName">rWord[0:59]</obj_property>
+      <obj_property name="ObjectShortName">rWord[0:59]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/Si" type="array">
+      <obj_property name="ElementShortName">Si[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Si[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/x_offset" type="array">
+      <obj_property name="ElementShortName">x_offset[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x_offset[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/y_offset" type="array">
+      <obj_property name="ElementShortName">y_offset[31:0]</obj_property>
+      <obj_property name="ObjectShortName">y_offset[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/loadTemplate_Tester/number_encoded" type="array">
+      <obj_property name="ElementShortName">number_encoded[31:0]</obj_property>
+      <obj_property name="ObjectShortName">number_encoded[31:0]</obj_property>
+   </wvobject>
+</wave_config>

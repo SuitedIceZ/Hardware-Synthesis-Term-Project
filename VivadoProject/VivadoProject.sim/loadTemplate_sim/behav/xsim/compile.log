@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/loadmem_debugging.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module loadmem_debugging
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/loadTemplate_sim/new/loadTemplate_Tester.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module loadTemplate_Tester
