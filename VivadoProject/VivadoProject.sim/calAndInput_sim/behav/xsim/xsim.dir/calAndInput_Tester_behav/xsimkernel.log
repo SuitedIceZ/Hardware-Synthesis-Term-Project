@@ -1,0 +1,4 @@
+Running: xsim.dir/calAndInput_Tester_behav/xsimk.exe -simmode gui -wdb calAndInput_Tester_behav.wdb -simrunnum 0 -socket 55976
+Design successfully loaded
+Design Loading Memory Usage: 7904 KB (Peak: 7904 KB)
+Design Loading CPU Usage: 15 ms

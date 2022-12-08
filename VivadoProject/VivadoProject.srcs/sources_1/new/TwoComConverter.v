@@ -45,7 +45,7 @@ module twoComConverter(
         if(number_valid)begin
             twoCom_number_buffer = twoCom_number;
             
-            if(twoCom_number_buffer < 0)begin
+            if(twoCom_number_buffer[31] == 1)begin //negative
                 encode_sign = 11;
                 twoCom_number_buffer = -1*twoCom_number_buffer; 
             end

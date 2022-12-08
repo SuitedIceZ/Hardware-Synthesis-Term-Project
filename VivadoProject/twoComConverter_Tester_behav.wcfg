@@ -12,11 +12,11 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="29.801 ns"></ZoomEndTime>
-      <Cursor1Time time="0.002 ns"></Cursor1Time>
+      <ZoomEndTime time="60.601 ns"></ZoomEndTime>
+      <Cursor1Time time="60.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="160"></NameColumnWidth>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="7" />
@@ -32,21 +32,26 @@
    <wvobject fp_name="/twoComConverter_Tester/encode_sign" type="array">
       <obj_property name="ElementShortName">encode_sign[4:0]</obj_property>
       <obj_property name="ObjectShortName">encode_sign[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/twoComConverter_Tester/encode_0" type="array">
       <obj_property name="ElementShortName">encode_0[4:0]</obj_property>
       <obj_property name="ObjectShortName">encode_0[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/twoComConverter_Tester/encode_1" type="array">
       <obj_property name="ElementShortName">encode_1[4:0]</obj_property>
       <obj_property name="ObjectShortName">encode_1[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/twoComConverter_Tester/encode_2" type="array">
       <obj_property name="ElementShortName">encode_2[4:0]</obj_property>
       <obj_property name="ObjectShortName">encode_2[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/twoComConverter_Tester/encode_3" type="array">
       <obj_property name="ElementShortName">encode_3[4:0]</obj_property>
       <obj_property name="ObjectShortName">encode_3[4:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>
