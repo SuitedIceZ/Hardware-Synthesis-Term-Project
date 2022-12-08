@@ -28,12 +28,13 @@ module calAndInput_Tester(
     reg [31:0] A_num;
     reg [31:0] B_num;
     reg [2:0] operand_code;
+    reg reset;
     
     //output wire
     wire C_valid;
     wire [31:0] C_num;
     //assign C_valid = 1; //hardcode always valid
-    calculatorSystem calculatorSystem_module(clk,A_num,B_num,operand_code,C_num,C_valid);
+    calculatorSystem calculatorSystem_module(clk,A_num,B_num,operand_code,reset,C_num,C_valid);
     
     always
         #10 clk = !clk;
@@ -45,6 +46,7 @@ module calAndInput_Tester(
         A_num = 0;
         B_num = 0;
         operand_code = 0;
+        reset = 0;
         
         #100
         A_num = 139;
@@ -90,10 +92,15 @@ module calAndInput_Tester(
         A_num = 5432;
         B_num = 82;
         operand_code = 4; //divide
+        
         #100
         A_num = 5432;
         B_num = 0;
         operand_code = 4; //divide
+        
+        #100
+        reset = 1;
+        
         #1000 $finish;
     end
 endmodule

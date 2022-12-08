@@ -1,0 +1,4 @@
+Running: xsim.dir/inputController_Tester2_behav/xsimk.exe -simmode gui -wdb inputController_Tester2_behav.wdb -simrunnum 0 -socket 62701
+Design successfully loaded
+Design Loading Memory Usage: 7916 KB (Peak: 7916 KB)
+Design Loading CPU Usage: 15 ms

@@ -32,6 +32,7 @@ module mainSystem(
     );
     wire reset;
     assign reset = sw[0];
+    //SinglePulser reset_sw_sp(reset,sw[0],clk);
     
     //input from uart (by keyboard in serial terminal)
     wire [7:0] input_byte; 
