@@ -45,13 +45,13 @@ module mainSystem(
     wire [31:0] B_num; // two complement number
     wire [2:0] operand_code;
     //assign operand_code = 3; //hardcode always *
-    inputController(clk,input_byte,received,reset,A_num,B_num,operand_code);
+    inputController(clk,input_byte,received,reset,A_num,B_num,operand_code,clear_answer);
 
     //ALU and calculate system
     wire C_valid;
     wire [31:0] C_num;
     //assign C_valid = 1; //hardcode always valid
-    calculatorSystem(clk,A_num,B_num,operand_code,C_num,C_valid);
+    calculatorSystem(clk,A_num,B_num,operand_code,reset||clear_answer,C_num,C_valid);
     
     //VGA system
     VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});

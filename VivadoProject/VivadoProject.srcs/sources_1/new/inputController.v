@@ -27,15 +27,18 @@ module inputController(
     input reset,
     output reg [31:0] A_num, // two complement number
     output reg [31:0] B_num, // two complement number
-    output reg [2:0] ALU_sign // 0,1,2,3,4 for empty,+,-,*,/ in order
+    output reg [2:0] ALU_sign, // 0,1,2,3,4 for empty,+,-,*,/ in order
+    output wire clear_answer
     //Debugger
-    ,output reg sign_state
+    //,output reg sign_state
     );
+    
     reg [1:0] state; // 0 receiving A , 1 receiving Sign , 2  receiving B , 3 show answer
     reg [2:0] order_state; // 0,1,2,3,4 inorder
     
-//    reg sign_state;
+    reg sign_state;
     reg internal_reset;
+    assign clear_answer = internal_reset;
     
     initial
     begin
@@ -47,20 +50,7 @@ module inputController(
         ALU_sign = 0;
         internal_reset = 0;
     end
-    /*
-    always @(posedge clk)
-    begin
-        if(reset == 1 || internal_reset == 1)begin
-            state = 0;
-            order_state = 0;
-            sign_state = 0;
-            A_num = 0;
-            B_num = 0;
-            ALU_sign = 0;
-            internal_reset = 0;
-        end
-    end
-    */
+
     SinglePulser received_sp_m (received_sp,received,clk);
     always @(posedge clk)
     begin

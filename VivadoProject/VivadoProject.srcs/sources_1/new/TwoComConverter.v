@@ -24,10 +24,10 @@ module twoComConverter(
     input [31:0] twoCom_number, //two complement decimal (assume already in range)
     input number_valid, // validity to show NaN , 1 = valid , 0 = NaN
     output reg [4:0] encode_sign,
-    output reg [4:0] encode_0,
+    output reg [4:0] encode_0, // 0 as MSB
     output reg [4:0] encode_1,
     output reg [4:0] encode_2,
-    output reg [4:0] encode_3
+    output reg [4:0] encode_3 // 3 as LSB   => {s,0,1,2,3}
     );
     reg [31:0] twoCom_number_buffer;
     initial

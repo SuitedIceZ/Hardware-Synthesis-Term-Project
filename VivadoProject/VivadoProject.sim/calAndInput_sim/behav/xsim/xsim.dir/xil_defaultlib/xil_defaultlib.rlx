@@ -3,5 +3,7 @@
 Apr 18 2022
 16:05:34
 D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.sim/calAndInput_sim/behav/xsim/glbl.v,1649976174,verilog,,,,glbl,,,,,,,,
-D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/calAndInput_sim/new/calAndInput_Tester.v,1670493751,verilog,,,,calAndInput_Tester,,,,,,,,
-D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/calculatorSystem.v,1670493792,verilog,,D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/calAndInput_sim/new/calAndInput_Tester.v,,calculatorSystem,,,,,,,,
+D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/calAndInput_sim/new/calAndInput_Tester.v,1670498027,verilog,,,,calAndInput_Tester,,,,,,,,
+D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/SinglePulser.v,1670438573,verilog,,D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/calculatorSystem.v,,SinglePulser,,,,,,,,
+D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/calculatorSystem.v,1670493792,verilog,,D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/inputController.v,,calculatorSystem,,,,,,,,
+D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/inputController.v,1670497181,verilog,,D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/calAndInput_sim/new/calAndInput_Tester.v,,inputController,,,,,,,,
