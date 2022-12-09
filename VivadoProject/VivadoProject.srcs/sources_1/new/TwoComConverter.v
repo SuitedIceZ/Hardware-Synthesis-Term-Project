@@ -21,17 +21,26 @@
 
 
 module twoComConverter(
+    input clk,
     input [31:0] twoCom_number, //two complement decimal (assume already in range)
     input number_valid, // validity to show NaN , 1 = valid , 0 = NaN
+    input reset,
     output reg [4:0] encode_sign,
     output reg [4:0] encode_0, // 0 as MSB
     output reg [4:0] encode_1,
     output reg [4:0] encode_2,
     output reg [4:0] encode_3 // 3 as LSB   => {s,0,1,2,3}
     );
+    
+    reg [1:0] state;
+    reg [31:0] twoCon_number_template;
     reg [31:0] twoCom_number_buffer;
+    
     initial
     begin
+        state = 0;
+        twoCon_number_template = 0;
+        twoCom_number_buffer = 0;
         encode_sign = 13; //Empty
         encode_0 = 13;
         encode_1 = 13;
@@ -39,8 +48,10 @@ module twoComConverter(
         encode_3 = 13;
     end
     
+    
+    
     integer i;
-    always @*
+    always @(posedge clk)
     begin
         if(number_valid)begin
             twoCom_number_buffer = twoCom_number;
