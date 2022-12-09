@@ -36,6 +36,11 @@ module twoComConverter(
     reg [31:0] twoCon_number_template;
     reg [31:0] twoCom_number_buffer;
     
+    wire [31:0] div1000;
+    wire [31:0] div100;
+    wire [31:0] div10;
+    wire [31:0] div1;
+    
     initial
     begin
         state = 0;
@@ -48,7 +53,18 @@ module twoComConverter(
         encode_3 = 13;
     end
     
-    
+    pos_divider pos_divider_1000(clk,
+                                (twoCom_number_buffer[31] ? -1*twoCom_number_buffer :twoCom_number_buffer),
+                                1000,reset,div1000);
+    pos_divider pos_divider_100(clk,
+                                (twoCom_number_buffer[31] ? -1*twoCom_number_buffer :twoCom_number_buffer),
+                                100,reset,div100);
+    pos_divider pos_divider_10(clk,
+                                (twoCom_number_buffer[31] ? -1*twoCom_number_buffer :twoCom_number_buffer),
+                                10,reset,div10);                      
+    pos_divider pos_divider_1(clk,
+                                (twoCom_number_buffer[31] ? -1*twoCom_number_buffer :twoCom_number_buffer),
+                                1,reset,div1);
     
     integer i;
     always @(posedge clk)
@@ -57,12 +73,17 @@ module twoComConverter(
             twoCom_number_buffer = twoCom_number;
             
             if(twoCom_number_buffer[31] == 1)begin //negative
-                encode_sign = 11;
-                twoCom_number_buffer = -1*twoCom_number_buffer; 
+                encode_sign <= 11;
+                twoCom_number_buffer <= -1*twoCom_number_buffer; 
             end
             else
-                encode_sign = 13;
+                encode_sign <= 13;
+            encode_0 <= div1000;
+            encode_1 <= div100 - (10*div1000);
+            encode_2 <= div10 - (10*div100);
+            encode_3 <= div1 - (10*div10);
             
+            /*
             encode_3 = twoCom_number_buffer%10;
             twoCom_number_buffer = twoCom_number_buffer/10;
             
@@ -72,7 +93,8 @@ module twoComConverter(
             encode_1 = twoCom_number_buffer%10;
             twoCom_number_buffer = twoCom_number_buffer/10;
             
-            encode_0 = twoCom_number_buffer%10;
+            encode_0 = twoCom_number_buffer%10; 
+            */
         end else begin
             encode_sign = 13; //Empty
             encode_0 = 13;

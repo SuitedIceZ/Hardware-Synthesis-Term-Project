@@ -25,7 +25,7 @@ module SevenSegSystem(
     output dp,
     output [3:0] an,
     input clk,
-    input [15:0] num_display
+    input [19:0] num_display
     
     );
     wire targetClk;
@@ -51,9 +51,9 @@ module SevenSegSystem(
     wire [3:0] num3;
     
     //num 0 is leftmost hand side segment display
-    assign num0=num_display[15:12]; 
-    assign num1=num_display[11:8];
-    assign num2=num_display[7:4];
+    assign num0=num_display[18:15]; 
+    assign num1=num_display[13:10];
+    assign num2=num_display[8:5];
     assign num3=num_display[3:0];
     
     quadSevenSeg q7seg(seg,dp,an0,an1,an2,an3,num0,num1,num2,num3,targetClk);

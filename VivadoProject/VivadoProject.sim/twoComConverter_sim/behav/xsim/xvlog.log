@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/TwoComConverter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module twoComConverter
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/sources_1/new/pos_divider.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pos_divider
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Education/year3/term1/HW_SYS_LAB/TermProject/VivadoProject/VivadoProject.srcs/twoComConverter_sim/new/twoComConverter_Tester.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module twoComConverter_Tester

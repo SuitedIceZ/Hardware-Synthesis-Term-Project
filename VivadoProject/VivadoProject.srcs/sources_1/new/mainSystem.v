@@ -58,7 +58,7 @@ module mainSystem(
     calculatorSystem(clk,A_num,B_num,operand_code,reset||clear_answer,C_num,C_valid);
     
     //VGA system (can be comment for better gen time to debug in sevenSeg)
-    //VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});
+    /VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});
 
 
 
@@ -85,10 +85,11 @@ module mainSystem(
     //twoComConverter Display_num_converter(choose_num,choose_valid,number_encoded_display[0],number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]);
     //tested bug here maybe modulo, divide => try separate clk to divide
     //twoComConverter Display_num_converter(152,1,number_encoded_display[0],number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]);
-    twoComConverter Display_num_converter(clk,152,1,number_encoded_display[0],number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]);
+    //twoComConverter Display_num_converter(clk,152,1,reset,number_encoded_display[0],number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]);
+    twoComConverter Display_num_converter(clk,choose_num,choose_valid,reset,number_encoded_display[0],number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]);
     
     
-    wire [15:0] num_display = {number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]};
+    wire [19:0] num_display = {number_encoded_display[1],number_encoded_display[2],number_encoded_display[3],number_encoded_display[4]};
     //wire [15:0] num_display = {4'h1,4'h0,4'h2,4'h4};
     assign led[8:4] = number_encoded_display[0];
     assign led[9] = choose_valid;
