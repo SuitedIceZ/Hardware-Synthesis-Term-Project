@@ -1,4 +1,7 @@
-Running: xsim.dir/twoComConverter_Tester_behav/xsimk.exe -simmode gui -wdb twoComConverter_Tester_behav.wdb -simrunnum 0 -socket 56378
+Running: xsim.dir/twoComConverter_Tester_behav/xsimk.exe -simmode gui -wdb twoComConverter_Tester_behav.wdb -simrunnum 0 -socket 65530
 Design successfully loaded
-Design Loading Memory Usage: 7924 KB (Peak: 7924 KB)
-Design Loading CPU Usage: 46 ms
+Design Loading Memory Usage: 7892 KB (Peak: 7892 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 8456 KB (Peak: 8456 KB)
+Simulation CPU Usage: 31 ms
