@@ -1,4 +1,4 @@
-# Hardware-Synthesis-Term-Project
+# Hardware-Synthesis-Term-Project (old readme)
 
 
 
@@ -64,9 +64,3 @@ inorder maybe?
     // work on : [word_size-1:0] mem [left:right]
     // Each row of FILE_PATH = size of mem word
     // FILE_PATH have {left}+1 row
-
-## overall design
-https://www.figma.com/file/ttdMgiPqOm3iubzaCuELEg/Untitled?node-id=0%3A1&t=1q9XEZVmiG1E8r37-1
-
-## memory generator
-https://colab.research.google.com/drive/1w_Xdy1zjZwN9j4Df6NwWMuRBn8sb7eZn?usp=sharing
