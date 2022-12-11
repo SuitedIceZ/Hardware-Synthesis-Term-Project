@@ -128,16 +128,16 @@ module VGA_system(
     twoComConverter B_num_converter(-8941,1,number_encoded_all[5],number_encoded_all[6],number_encoded_all[7],number_encoded_all[8],number_encoded_all[9]);
     twoComConverter C_num_converter(-10000,0,number_encoded_all[10],number_encoded_all[11],number_encoded_all[12],number_encoded_all[13],number_encoded_all[14]);
     */
-    twoComConverter A_num_converter(A_num,1,number_encoded_all[0],number_encoded_all[1],number_encoded_all[2],number_encoded_all[3],number_encoded_all[4]);
-    twoComConverter B_num_converter(B_num,1,number_encoded_all[5],number_encoded_all[6],number_encoded_all[7],number_encoded_all[8],number_encoded_all[9]);
-    twoComConverter C_num_converter(C_num,C_valid,number_encoded_all[10],number_encoded_all[11],number_encoded_all[12],number_encoded_all[13],number_encoded_all[14]);
+    twoComConverter A_num_converter(clk,A_num,1      ,reset,number_encoded_all[0],number_encoded_all[1],number_encoded_all[2],number_encoded_all[3],number_encoded_all[4]);
+    twoComConverter B_num_converter(clk,B_num,1      ,reset,number_encoded_all[5],number_encoded_all[6],number_encoded_all[7],number_encoded_all[8],number_encoded_all[9]);
+    twoComConverter C_num_converter(clk,C_num,C_valid,reset,number_encoded_all[10],number_encoded_all[11],number_encoded_all[12],number_encoded_all[13],number_encoded_all[14]);
     
     assign number_encoded_all[15] = operand_code + 14;
 
 
     // rgb buffer config by current_state
     integer Si;
-    reg current_state;
+    reg [2:0] current_state;
     always @(posedge p_tick) begin
         
         //Check number box
@@ -147,6 +147,10 @@ module VGA_system(
                 if(pos_x[Si] <= x && x < pos_x[Si] + size_x[Si])begin
                     //current_state = number_encoded_all[Si*5:((Si+1)*5)-1];
                     current_state = template_num_array[(number_encoded_all[Si]*96)+(y-pos_y[Si])][x-pos_x[Si]];
+                    if(number_encoded_all[Si] == 10 || number_encoded_all[Si] == 12)
+                        current_state = 2*current_state; //Red NaN
+                    else
+                        current_state = 3*current_state; //Grey Number
                 end
             end
         end
@@ -156,17 +160,29 @@ module VGA_system(
         if(pos_y[Si] <= y && y < pos_y[Si] + size_y[Si])begin
                 if(pos_x[Si] <= x && x < pos_x[Si] + size_x[Si])begin
                     //current_state = template_sign_array[y-pos_y[Si]][x-pos_x[Si]];
-                    current_state = template_sign_array[(number_encoded_all[Si]*60)+(y-pos_y[Si])][x-pos_x[Si]];
+                    current_state = 1*template_sign_array[((number_encoded_all[Si] - 14)*60)+(y-pos_y[Si])][x-pos_x[Si]];
                 end
         end
         
         //Write bar
-        if((291 <= y && y < 291 + 8) && (80 <= x && x < 396+80))begin
+        if((298 <= y && y < 298 + 8) && (80 <= x && x < 396+80))begin
             current_state = 1;
         end
         
+        //Write border
+        if((y < 8) || (x < 8) || (x >= 632) || (y >= 472))begin
+            current_state = 1;
+        end
         //check screen_mem boolean status
-        rgb_reg[11:0] = (current_state) ? {4'hF,4'hF,4'hF} : {4'h0,4'h0,4'h0};
+        
+        
+        //rgb_reg[11:0] = (current_state) ? {4'hF,4'hF,4'hF} : {4'h0,4'h0,4'h0};
+        case (current_state)
+            3'h0 : rgb_reg[11:0] = {4'h0,4'h0,4'h0}; //Black
+            3'h1 : rgb_reg[11:0] = {4'h6,4'h0,4'h0}; //Red bar and operator
+            3'h2 : rgb_reg[11:0] = {4'hD,4'h3,4'h3}; //Red NaN
+            3'h3 : rgb_reg[11:0] = {4'hA,4'hA,4'hA}; //Grey Number
+        endcase
         //rgb_reg[11:0] <= {12{1'b1}};
     end
     // output

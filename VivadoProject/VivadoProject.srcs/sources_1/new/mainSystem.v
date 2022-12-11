@@ -29,10 +29,10 @@ module mainSystem(
     output wire [3:0] vgaBlue,
     output wire Hsync, Vsync,
     output RsTx
-    ,output wire [9:0] led //For test and debug
+    /*,output wire [9:0] led //For test and debug
     ,output [6:0] seg,
     output dp,
-    output [3:0] an
+    output [3:0] an*/
     );
     wire reset;
     assign reset = sw[0];
@@ -58,13 +58,16 @@ module mainSystem(
     calculatorSystem(clk,A_num,B_num,operand_code,reset||clear_answer,C_num,C_valid);
     
     //VGA system (can be comment for better gen time to debug in sevenSeg)
-    /VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});
+    wire stage_changed;
+    assign stage_changed = 0; //not use yet
+    VGA_system(clk,reset,A_num,B_num,C_num,C_valid,operand_code,stage_changed,Hsync,Vsync,{vgaRed, vgaGreen, vgaBlue});
 
 
 
     //***************************
     // Below is only LED and SevenSegment for debug
     //***************************
+    /*
     assign led[3:0] = sw[3:0];
     
     wire [4:0] number_encoded_display [4:0];
@@ -94,4 +97,5 @@ module mainSystem(
     assign led[8:4] = number_encoded_display[0];
     assign led[9] = choose_valid;
     SevenSegSystem(seg,dp,an,clk,num_display); //not bug
+    */
 endmodule
